@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Five Concepts That Make Ads Feel Native</title>
+<meta name="description" content="Why five familiar social formats work, and how to adapt their structure for your next ad, with real examples on Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500&family=Geist:wght@400;500&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --surface: #17151e;
+    --line: #272430;
+    --text: #f0ede8;
+    --muted: #b5b2aa;
+    --accent: #8f78f2;
+    --tint: rgba(143, 120, 242, 0.14);
+    --tint-text: #c9bcfb;
+    --glass: linear-gradient(#fff 24%, #f7f5f1 50%, #9a978f 84%, #b5b2aa);
+    --mono: 'Geist Mono', monospace;
+  }
+
+  html { font-size: 17px; color-scheme: dark; }
+
+  body {
+    background:
+      radial-gradient(1200px 520px at 30% -120px, rgba(143, 120, 242, 0.12), transparent 70%) no-repeat,
+      linear-gradient(#13111a, #0f0d13 900px, #0a0a0c 2200px) no-repeat #0a0a0c;
+    color: var(--text);
+    font-family: 'Geist', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  p { max-width: 65ch; margin-bottom: 1.2rem; }
+  strong { font-weight: 500; }
+
+  /* Type: display, title, lead, body, label, code */
+
+  h1, h2, .figure {
+    font-family: 'Inter Tight', sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+  }
+
+  h2, .figure, h1 span, h1 em {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  h2, .figure, h1 span { background-image: var(--glass); }
+
+  /* --fit is the width of the longest title line in em */
+  h1 {
+    font-size: min(clamp(2.8rem, 8.4vw, 6.6rem), calc((100vw - 3rem) / var(--fit)));
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    padding-bottom: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Extend gradients below the baseline; margins preserve the existing spacing. */
+  h1 span, h2 { padding-bottom: 0.15em; }
+  h1 span { display: block; white-space: nowrap; margin-bottom: -0.15em; }
+  h1 em { font-style: normal; background-image: linear-gradient(#ece7ff, #c9bcfb 30%, var(--accent) 72%, #6a52d6); }
+
+  h2, .figure { font-size: 2.2rem; }
+  h2 { margin-bottom: calc(1rem - 0.15em); }
+  .figure { margin-bottom: 1rem; }
+
+  .lead { font-size: 1.2rem; line-height: 1.55; max-width: 34rem; }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  code, pre { font-family: var(--mono); font-size: 0.8rem; }
+  code { background: var(--tint); color: var(--tint-text); padding: 0.08em 0.4em; border-radius: 4px; }
+  pre { padding: 1.3rem 1.2rem; line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .tag { display: block; width: fit-content; margin-bottom: 1.25rem; padding: 0.25rem 0.55rem; border-radius: 6px; background: var(--tint); color: var(--tint-text); }
+
+  /* Layout */
+
+  main, footer p { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+
+  .hero { padding: 5rem 0 3rem; border-bottom: 1px solid; border-image: linear-gradient(90deg, var(--line) 60%, transparent) 1; }
+  .byline { display: flex; gap: 0.9rem; margin-top: 2rem; }
+  .byline span + span::before { content: '·'; margin-right: 0.9rem; }
+
+  section { margin: 3.5rem 0; }
+  .split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; align-items: start; }
+  .split > *, .cards > * { min-width: 0; }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .cards .card { display: flex; flex-direction: column; padding: 1.75rem; }
+
+  .media { display: block; width: 100%; border-radius: 12px; margin-bottom: 1.5rem; }
+  .video { display: block; width: min(100%, 360px); aspect-ratio: 9 / 16; margin: 0 auto; border-radius: 12px; }
+
+  .code { margin-bottom: 1rem; }
+  .code header { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 0.9rem 0.7rem 1.1rem; border-bottom: 1px solid var(--line); }
+  .code button { min-width: 70px; padding: 0.4rem 0.75rem; border: 0; border-radius: 6px; background: var(--text); color: #0a0a0c; cursor: pointer; }
+  .code button:hover { background: #fff; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+  .rows { margin-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+  .rows div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; align-items: baseline; padding: 0.6rem 0; border-top: 1px solid var(--line); }
+
+  .links { margin-top: auto; }
+  .links a { display: flex; justify-content: space-between; padding: 0.8rem 0; border-top: 1px solid var(--line); }
+  .links a::after { content: '↗'; color: var(--muted); }
+  .links a:hover, .links a:hover::after { color: var(--tint-text); }
+
+  .prices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; margin: 2.5rem 0 1.25rem; }
+  .prices div { display: flex; flex-direction: column; gap: 0.35rem; padding: 1.25rem 1.4rem; background: var(--surface); }
+  .prices .figure { margin: 0.2rem 0 0; }
+  .prices .ours { background: #221d33; }
+
+  .source { border-bottom: 1px solid var(--line); }
+  .source:hover { color: var(--tint-text); }
+
+  footer { padding: 1.6rem 0; border-top: 1px solid var(--line); }
+
+  @media (max-width: 860px) {
+    .split, .cards { grid-template-columns: 1fr; gap: 2rem; }
+    .prices { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 3.5rem 0 2.5rem; }
+    .cards .card { padding: 1.4rem; }
+    h2, .figure { font-size: 1.8rem; }
+    .rows div { grid-template-columns: 6rem 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+
+  <header class="hero">
+    <h1 style="--fit: 8.1"><span>Five concepts that</span> <span>make ads feel <em>native</em></span></h1>
+    <p class="lead">The trick is to borrow the structure of content people already enjoy watching, then give your product a natural role in it. If the idea sounds worth watching before you even mention the product, you&#x27;ve got something to build on.</p>
+    <div class="byline label"><span>By Adi</span><span>4 min read</span></div>
+  </header>
+
+  <section>
+    <h2>Day in the life</h2>
+    <figure class="media">
+      <a href="https://www.instagram.com/reel/DaClEhzB5WC/" target="_blank" rel="noopener" aria-label="Watch the full day in the life reel by @dreakwon on Instagram">
+        <img class="video" src="assets/day-in-the-life.jpg" width="540" alt="Day in the life reel by @dreakwon" loading="lazy">
+      </a>
+      <figcaption class="label">Click the frame to watch the full reel.</figcaption>
+    </figure>
+    <p>The trick with a day-in-the-life ad is to let the routine do some of the selling for you. When someone sees your product solving a problem during a day that looks like theirs, they can picture using it themselves. A bag&#x27;s compartments suddenly mean something when you&#x27;re packing for work, the gym and a night out in the same video.</p>
+<p>Start with a day your customer recognises, then work out where your product would naturally come in. If you&#x27;re selling a meal service, show someone coming home late from work and getting dinner together without much effort. Give us a little of the day around that moment, too, so the product feels like something this person actually uses.</p>
+  </section>
+
+  <section>
+    <h2>Replying to a comment</h2>
+    <figure class="media">
+      <a href="https://www.instagram.com/reel/DUzNdZrEucT/" target="_blank" rel="noopener" aria-label="Watch the full replying to a comment reel by @ecommerceequation on Instagram">
+        <img class="video" src="assets/replying-to-a-comment.jpg" width="540" alt="Replying to a comment reel by @ecommerceequation" loading="lazy">
+      </a>
+      <figcaption class="label">Click the frame to watch the full reel.</figcaption>
+    </figure>
+    <p>Your comments section is already giving you ad ideas. Look for the questions people ask just before buying, because those are often the same questions the next viewer has in their head. If you don&#x27;t have comments yet, you can make one up around a question your customer would ask. Someone watching with that same question has a reason to stick around for the answer.</p>
+<p>Choose a question you can answer on camera. If someone asks whether a jacket fits over a thick jumper, put one on and show them. You get a hook, a demonstration and a reason to trust the answer from a single question. Keep the whole ad centred on it so someone watching can think, &#x27;Okay, that would work for me.&#x27;</p>
+  </section>
+
+  <section>
+    <h2>Street interactions</h2>
+    <figure class="media">
+      <a href="https://www.instagram.com/reel/De4CGUazas9/" target="_blank" rel="noopener" aria-label="Watch the full street interactions reel by @leilalayzell on Instagram">
+        <img class="video" src="assets/street-interactions.jpg" width="540" alt="Street interactions reel by @leilalayzell" loading="lazy">
+      </a>
+      <figcaption class="label">Click the frame to watch the full reel.</figcaption>
+    </figure>
+    <p>In this reel, she spots someone she fancies and asks him to go for tea. You&#x27;re watching to see if he&#x27;ll say yes and how their little date goes, so by the time they&#x27;re ordering and trying drinks, the brand already belongs in the story. It feels like the kind of encounter you&#x27;d watch anyway, and you&#x27;re curious enough about what happens next to stay for the product.</p>
+<p>Build yours around a situation people would want to see play out, with your product giving them something to do together. You could invite someone to try a new café with you or have two strangers choose each other&#x27;s order. Plan how you&#x27;ll bring them together, then give them room to talk and react. We get to know the product while we&#x27;re following what&#x27;s happening between them.</p>
+  </section>
+
+  <section>
+    <h2>Podcast clips</h2>
+    <figure class="media">
+      <a href="https://www.instagram.com/reel/DW4aYpWESru/" target="_blank" rel="noopener" aria-label="Watch the full podcast clips reel by @frankyshaw on Instagram">
+        <img class="video" src="assets/podcast-clips.jpg" width="540" alt="Podcast clips reel by @frankyshaw" loading="lazy">
+      </a>
+      <figcaption class="label">Click the frame to watch the full reel.</figcaption>
+    </figure>
+    <p>Give the viewer&#x27;s questions to the other person in the conversation. One speaker brings up the product, and the other asks what it costs, how it works or why they&#x27;d use it. You can cover the things someone wants to know before buying through the questions they&#x27;d ask if they were sitting there too.</p>
+<p>When you write yours, start with the exchange you&#x27;d actually stop to listen to, then let each question move the conversation along. If one person mentions the price, the other can ask what you&#x27;d usually pay for something similar. You can script this, including with AI speakers, using details you can actually back up. Write each follow-up around something the other person just said.</p>
+  </section>
+
+  <section>
+    <h2>Challenges</h2>
+    <figure class="media">
+      <a href="https://www.instagram.com/reel/DcOJFsSpXAI/" target="_blank" rel="noopener" aria-label="Watch the full challenges reel by @zenushkascut on Instagram">
+        <img class="video" src="assets/challenges.jpg" width="540" alt="Challenges reel by @zenushkascut" loading="lazy">
+      </a>
+      <figcaption class="label">Click the frame to watch the full reel.</figcaption>
+    </figure>
+    <p>A challenge gives your product a job to do and gives the viewer a result to wait for. Once you&#x27;ve set a goal with a time limit or budget, we&#x27;re watching to see whether you&#x27;ll pull it off. As you work through it, we get to see what the product can do and how much of a difference it makes.</p>
+<p>Pick a challenge your customer would care about, like making five lunches on a fixed budget or refreshing a room in one afternoon. Explain the rules upfront, then spend your time on the moments where the product helps you make progress. Leave in the decisions and small setbacks that explain the result, and finish by showing what you actually achieved. If the goal was five lunches for $30, show all five and what you spent.</p>
+  </section>
+
+</main>
+
+<footer><p class="label">&copy; 2026 Adi &nbsp;·&nbsp; All rights reserved</p></footer>
+
+</body>
+</html>
